@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+ 	<!-- Configure la classe et la méthode à éxécuter spring-support 2.5.6
+	 <bean name="centreInteretMAJJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+	  	<property name="jobClass" value="jv.jpatpl.quartz.JobMiseAJourDonnee" />
+	  	
+	</bean>-->
+	
+	<!--   Cron Trigger, run every 5 seconds
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="centreInteretMAJJob" />
+	    <property name="cronExpression" value="0/5 * * * * ?" />
+	</bean> -->
+	
+	<!-- Scheduler configuré
+	 <bean id="jobFactory" class="org.springframework.scheduling.quartz.SpringBeanJobFactory"/>
+	<bean class="org.springframework.scheduling.scheduler.SchedulerFactoryBean">
+	    <property name="triggers">
+	        <list>
+	            <ref bean="cronTrigger" />
+	        </list>
+	    </property>
+	    <property name="jobFactory" ref="jobFactory" />
+	</bean> -->
+</beans>
