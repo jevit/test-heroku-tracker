@@ -1,5 +1,8 @@
 package jv.jpatpl.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.MediaType;
@@ -26,17 +29,27 @@ public class TestController {
 		return "test";
 	}
 
-	@RequestMapping(value = "/getPojo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/personne", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Pojo getPojo() {
 		System.out.println("getPojo");
-		return new Pojo("vit", "je");
+		return new Pojo(1L, "vit", "je");
+	}
+
+	@RequestMapping(value = "/personnes", method = RequestMethod.GET)
+	public @ResponseBody List<Pojo> getPersonnes() {
+		System.out.println("getPojolist");
+		ArrayList list = new ArrayList();
+		list.add(new Pojo(1L, "vit", "je"));
+		list.add(new Pojo(2L, "vit2", "je2"));
+		return list;
 	}
 
 	private class Pojo {
+		private Long id;
 		private String nom;
 		private String prenom;
 
-		public Pojo(String nom, String prenom) {
+		public Pojo(Long id, String nom, String prenom) {
 			super();
 			this.nom = nom;
 			this.prenom = prenom;
@@ -56,6 +69,14 @@ public class TestController {
 
 		public void setPrenom(String prenom) {
 			this.prenom = prenom;
+		}
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
 		}
 
 	}

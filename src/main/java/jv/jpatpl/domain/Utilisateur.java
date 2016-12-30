@@ -2,7 +2,6 @@ package jv.jpatpl.domain;
 
 import java.util.Date;
 
-import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
@@ -10,8 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "UT_Utilisateur")
-@SequenceGenerator(name = AbstractEntity.SEQUENCE, sequenceName = Utilisateur.SEQUENCE)
-@AttributeOverride(name = "id", column = @Column(name = "id"))
+@SequenceGenerator(name = Utilisateur.SEQUENCE, sequenceName = Utilisateur.SEQUENCE)
 public class Utilisateur extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = 1L;

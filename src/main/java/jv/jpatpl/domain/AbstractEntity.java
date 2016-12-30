@@ -9,8 +9,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 @MappedSuperclass
-public abstract class AbstractEntity<PK extends Serializable> implements
-		Serializable {
+public abstract class AbstractEntity<PK extends Serializable> implements Serializable {
 
 	/**
 	 * 
@@ -20,40 +19,11 @@ public abstract class AbstractEntity<PK extends Serializable> implements
 	public static final String SEQUENCE = "CustomGenerator";
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = AbstractEntity.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private PK id;
 
 	@Version
 	private Long version;
-
-	// @Column(name = "created",nullable=false)
-	// @Temporal(TemporalType.TIMESTAMP)
-	// @DateTimeFormat(style = "MM")
-	// private Calendar created;
-
-	/*
-	 * @Column(name = "createdBy", nullable=false) private Calendar createdBy;
-	 */
-
-	// @Column(name = "lastModified",nullable=false)
-	// @Temporal(TemporalType.TIMESTAMP)
-	// @DateTimeFormat(style = "MM")
-	// @Version
-	// private Calendar lastModified;
-
-	/*
-	 * @Column(name = "modified_on",nullable=false) private Calendar
-	 * lastModifiedBy;
-	 */
-
-	/*
-	 * @PrePersist public void prePersist() { Calendar now =
-	 * Calendar.getInstance(); this.created = now; this.lastModified = now; }
-	 * 
-	 * 
-	 * @PreUpdate public void preUpdate() { Calendar now =
-	 * Calendar.getInstance(); this.lastModified = now; }
-	 */
 
 	public Long getVersion() {
 		return version;

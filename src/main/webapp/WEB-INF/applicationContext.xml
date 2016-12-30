@@ -23,13 +23,25 @@
 	<context:annotation-config /> 
 	
    	<!-- Scans the packages to deploy as beans -->
+	<context:component-scan base-package="jv.jpatpl.domain" />
 	<context:component-scan base-package="jv.jpatpl.dao" />
 	<context:component-scan base-package="jv.jpatpl.service" />
+	<context:component-scan base-package="jv.jpatpl.controller" />
 	<context:component-scan base-package="jv.jpatpl.scheduler" />
 	<context:component-scan base-package="jv.jpatpl.listenner" />
-	<context:component-scan base-package="jv.jpatpl.controller" />
 
-
+	<!-- Jackson -->
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jacksonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	
 	<!-- AOP -->
 	<import resource="aop.xml"/>
 	<!-- Quartz -->
