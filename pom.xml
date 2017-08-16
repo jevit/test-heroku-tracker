@@ -319,7 +319,7 @@
 	                <assembleDirectory>target</assembleDirectory>
 	                <programs>
 	                    <program>
-	                        <mainClass>jv.jpatpl.Main</mainClass>
+	                        <mainClass>jv.jpatpl.Application</mainClass>
 	                        <name>webapp</name>
 	                    </program>
 	                </programs>
