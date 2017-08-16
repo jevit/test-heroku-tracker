@@ -9,9 +9,9 @@ import java.util.Map.Entry;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public abstract class GenericDaoImpl<T> /* implements GenericDao<T> */{
+public abstract class GenericDaoImpl<T> /* implements GenericDao<T> */ {
 
-	@PersistenceContext(unitName = "punit")
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	public EntityManager getEntityManager() {
@@ -30,25 +30,20 @@ public abstract class GenericDaoImpl<T> /* implements GenericDao<T> */{
 		type = (Class) pt.getActualTypeArguments()[0];
 	}
 
-	private String getQueryClauses(final Map<String, Object> params,
-			final Map<String, Object> orderParams) {
+	private String getQueryClauses(final Map<String, Object> params, final Map<String, Object> orderParams) {
 		final StringBuffer queryString = new StringBuffer();
 		if ((params != null) && !params.isEmpty()) {
 			queryString.append(" where ");
-			for (final Iterator<Entry<String, Object>> it = params.entrySet()
-					.iterator(); it.hasNext();) {
+			for (final Iterator<Entry<String, Object>> it = params.entrySet().iterator(); it.hasNext();) {
 				final Map.Entry<String, Object> entry = it.next();
 				if (entry.getValue() instanceof Boolean) {
-					queryString.append(entry.getKey()).append(" is ")
-							.append(entry.getValue()).append(" ");
+					queryString.append(entry.getKey()).append(" is ").append(entry.getValue()).append(" ");
 				} else {
 					if (entry.getValue() instanceof Number) {
-						queryString.append(entry.getKey()).append(" = ")
-								.append(entry.getValue());
+						queryString.append(entry.getKey()).append(" = ").append(entry.getValue());
 					} else {
 						// String equality
-						queryString.append(entry.getKey()).append(" = '")
-								.append(entry.getValue()).append("'");
+						queryString.append(entry.getKey()).append(" = '").append(entry.getValue()).append("'");
 					}
 				}
 				if (it.hasNext()) {
@@ -58,8 +53,7 @@ public abstract class GenericDaoImpl<T> /* implements GenericDao<T> */{
 		}
 		if ((orderParams != null) && !orderParams.isEmpty()) {
 			queryString.append(" order by ");
-			for (final Iterator<Entry<String, Object>> it = orderParams
-					.entrySet().iterator(); it.hasNext();) {
+			for (final Iterator<Entry<String, Object>> it = orderParams.entrySet().iterator(); it.hasNext();) {
 				final Map.Entry<String, Object> entry = it.next();
 				queryString.append(entry.getKey()).append(" ");
 				if (entry.getValue() != null) {
