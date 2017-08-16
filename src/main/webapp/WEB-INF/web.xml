@@ -25,7 +25,7 @@
     </listener>
     
     <servlet>
-		<servlet-name>default</servlet-name>
+		<servlet-name>default2</servlet-name>
 		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
 		<init-param>
 		<param-name>debug</param-name>
