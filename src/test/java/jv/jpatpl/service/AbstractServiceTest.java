@@ -1,4 +1,4 @@
-package jv.jpatpl.dao;
+package jv.jpatpl.service;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
