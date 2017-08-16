@@ -42,8 +42,10 @@
 		</property>
 	</bean>
 	
-	<!-- AOP -->
-	<import resource="aop.xml"/>
+	<!-- AOP 
+	<import resource="aop.xml"/>-->
 	<!-- Quartz -->
 	<import resource="quartzByCode.xml"/> 
+	<!-- Rabbit -->
+	<import resource="rabbit.xml"/> 
 </beans>

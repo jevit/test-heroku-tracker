@@ -13,7 +13,8 @@ public class Personne extends AbstractEntity<Long> {
 
 	public Personne() {
 		super();
-		// TODO Auto-generated constructor stub
+		nom = "Empty";
+		prenom = "";
 	}
 
 	private String nom;

@@ -9,6 +9,8 @@
 
 	<name>jpa-tpl</name>
 	<url>http://maven.apache.org</url>
+	
+
 	<!-- REPOSITORIES -->
 	<repositories>
 		<repository>
@@ -39,6 +41,14 @@
 			<id>repo1.maven.org</id>
 			<url>http://repo1.maven.org/maven2/</url>
 		</repository>
+		 <repository>
+	        <id>spring-milestones</id>
+	        <name>Spring Milestones</name>
+	        <url>https://repo.spring.io/libs-milestone</url>
+	        <snapshots>
+	            <enabled>false</enabled>
+	        </snapshots>
+   		 </repository>
 	</repositories>
 
 	<!-- PROPERTIES -->
@@ -48,11 +58,47 @@
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.springframework.version>4.3.5.RELEASE</org.springframework.version>
+   		<tomcat.version>8.5.2</tomcat.version>
 	</properties>
 
 	<!-- DEPENDENCIES -->
 	<dependencies>
-
+	<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-catalina</artifactId>
+        <version>${tomcat.version}</version>
+</dependency>
+ <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-core</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-logging-juli</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper-el</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jsp-api</artifactId>
+        <version>${tomcat.version}</version>
+        
+    </dependency>
 		<!-- HsqlDB -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -246,12 +292,47 @@
 			<artifactId>dbunit</artifactId>
 			<version>2.5.2</version>
 		</dependency>
+		<!-- RabbitMQ -->
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>1.6.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<!-- nom du ficher compilé -->
 		<finalName>jpa-tpl</finalName>
+
+        
 		<plugins>
+			<plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>appassembler-maven-plugin</artifactId>
+	            <version>2.0.0</version>
+	            <configuration>
+	                <assembleDirectory>target</assembleDirectory>
+	                <programs>
+	                    <program>
+	                        <mainClass>launch.Main</mainClass>
+	                        <name>webapp</name>
+	                    </program>
+	                </programs>
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <phase>package</phase>
+	                    <goals>
+	                        <goal>assemble</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
