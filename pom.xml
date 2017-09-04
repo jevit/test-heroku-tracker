@@ -384,7 +384,7 @@
 	                <assembleDirectory>target</assembleDirectory>
 	                <programs>
 	                    <program>
-	                        <mainClass>jv.jpatpl.Application</mainClass>
+	                        <mainClass>jv.jpatpl.Spring</mainClass>
 	                        <name>webapp</name>
 	                    </program>
 	                </programs>
