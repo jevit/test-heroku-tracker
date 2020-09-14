@@ -1,1 +1,1 @@
-# jpa-spring-gwt
+# test de déploiement sur Heroku
