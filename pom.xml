@@ -64,7 +64,7 @@
 		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework.version>4.3.5.RELEASE</org.springframework.version>
+		<org.springframework.version>5.3.19</org.springframework.version>
    		<tomcat.version>8.5.2</tomcat.version>
 	</properties>
 
